@@ -1,0 +1,81 @@
+# Miriam Alva
+# CSC 210
+# This program will help get total,change,and how to give away change to a customer.
+# The program will have the items of the store and their prices stored in a dictionary.
+# This program will ask the customers what they would want and how many item they will want.
+# The customer's desired amount will be stored in a list that will help find out the total of each item and the total together.
+# With the amount that the customer will like to pay, the change will be given.
+# The program will use modulo operator to find how much ten, dollar bills and quaters and nickels will be given to the customer.
+
+
+# Dictionary will store items and their prices.
+myItemPrice = {'water bottle': 2, 'boxes of candy': 0.50, 'pens': 1.35}
+# This list will store the user's input into a list
+desiredQuantityOfItems = []
+
+
+# Will ask customer the amount that the customer desires for each project.
+waterBottlesWanted = int(input("How many water bottles do you want? "))
+candyBoxesWanted = int(input("How many candy boxes do you want? "))
+pensWanted = int(input("How many pens do you want? "))
+
+
+# This stores customers input into the list "desiredQuantityOfItems".
+desiredQuantityOfItems.append(waterBottlesWanted)
+desiredQuantityOfItems.append(candyBoxesWanted)
+desiredQuantityOfItems.append(pensWanted)
+
+
+# Will help find total price of each item (water bottles, candy boxes, pens)
+priceOfWaterBottle = desiredQuantityOfItems[0] * myItemPrice ['water bottle']
+priceOfcandyBoxes = desiredQuantityOfItems[1] * myItemPrice ['boxes of candy']
+priceOfPensWanted = desiredQuantityOfItems[2] * myItemPrice ['pens']
+
+
+# total price amount
+totalAllTogether = (priceOfWaterBottle + priceOfcandyBoxes + priceOfPensWanted)
+print(f'The total is ${totalAllTogether:.2f}.')
+
+
+# The amount the customer will pay, will find change with this input
+paymentAmount = float(input("How much would you like to pay? "))
+print()
+
+
+# Will print the amount desired by customer for each item, total price, and how much the customer is paying.
+print("Thanks for shopping.")
+print(f'{desiredQuantityOfItems[0]} water bottles')
+print(f'{desiredQuantityOfItems[1]} candy boxes')
+print(f'{desiredQuantityOfItems[2]} pens')
+print(f'total: ${totalAllTogether:.2f}')
+print(f'payment: ${paymentAmount:.2f}')
+
+
+# This will calculate the amount of change by subtracting what the customer will pay with the total price.
+change = round(paymentAmount - totalAllTogether,2)
+print(f'change: ${change:.2f}')
+print()
+
+
+# Will use module operator to find how to give change to a customer.
+# floor of 10 to find how many ten dollar bills to give.
+tenDollarBill = round(change // 10)
+# mod of 10 and floor of 1 to find how many dollar bills to give.
+oneDollarBill = round(change % 10 // 1)
+# mod of 10 and 1 and floor of 0.25 to find how many quarters to give.
+quarters = round(change % 10 % 1 //0.25)
+# mod of 10 , 1 and 0.25 and floor of 0.05 to find how many nickels to give.
+nickels = round(round(change % 10 % 1 % 0.25,2 ) /0.05)
+
+
+# Will print how the change will be given with ten, one dollar bills and quarters and nickels.
+print("Change denominations")
+print(f'{tenDollarBill} ten dollar bills')
+print(f'{oneDollarBill} one dollar bills')
+print(f'{quarters} quarters')
+print(f'{nickels} nickels')
+
+
+
+
+
